@@ -7,51 +7,26 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import ButtonGroup from "@material-ui/core/ButtonGroup";
 import Button from "@material-ui/core/Button";
+import { Doughnut } from "react-chartjs-2";
 
 import InfoCard from "./components/InfoCard/InfoCard";
 import Map from "./components/Map/Map";
 import Table from "./components/Table/Table";
 import MyChart from "./components/Chart/Chart";
 
+import { useDispatch, useSelector } from "react-redux";
+import * as actions from "./redux/actions";
+import { changeCountry } from "./redux/actions";
+
 import {
   capitalizeFirstLetter,
   casesTypeColors,
+  diagramOptions,
   normalizeNumbers,
 } from "./utils/utils";
 
 import "./App.scss";
 import "leaflet/dist/leaflet.css";
-import { useDispatch, useSelector } from "react-redux";
-import * as actions from "./redux/actions";
-import { changeCountry } from "./redux/actions";
-import { Doughnut } from "react-chartjs-2";
-
-//TODO refactore styles in nested maybe
-
-const pieOptions = {
-  responsive: true,
-  maintainAspectRatio: true,
-  legend: {
-    display: false,
-  },
-  elements: {
-    arc: {
-      borderWidth: 3,
-    },
-  },
-  tooltips: {
-    callbacks: {
-      title: function (tooltipItem, data) {
-        return data["labels"][tooltipItem[0]["index"]];
-      },
-      label: function (tooltipItem, data) {
-        return numeral(
-          data["datasets"][0]["data"][tooltipItem["index"]]
-        ).format("+0,0");
-      },
-    },
-  },
-};
 
 function App() {
   const dispatch = useDispatch();
@@ -111,7 +86,6 @@ function App() {
             </div>
           </div>
         </div>
-
         <Switch>
           <Route path="/map">
             <div className="app__statistics">
@@ -180,7 +154,7 @@ function App() {
                       },
                     ],
                   }}
-                  options={pieOptions}
+                  options={diagramOptions}
                   onElementsClick={(element) => {
                     console.log("elements", element[0]);
                     if (
@@ -235,15 +209,14 @@ function App() {
                       },
                     ],
                   }}
-                  options={pieOptions}
+                  options={diagramOptions}
                   onElementsClick={(element) => {
-                    console.log("elements", element[0]);
                     if (
                       !countryInfo.todayCases &&
                       !countryInfo.todayCases &&
                       !countryInfo.todayCases
                     )
-                      return;
+                      return null;
                     switch (element?.[0]?._index) {
                       case 0: {
                         dispatch(actions.setCasesType("cases"));

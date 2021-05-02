@@ -1,11 +1,11 @@
 import React, { memo, useEffect } from "react";
 import { Circle, MapContainer, Popup, TileLayer, useMap } from "react-leaflet";
 import { casesTypeColors } from "../../utils/utils";
-
-import "./Map.scss";
 import numeral from "numeral";
 import { changeCountry } from "../../redux/actions";
 import { useDispatch } from "react-redux";
+
+import "./Map.scss";
 
 function MapViewController({ center, zoom }) {
   const map = useMap();

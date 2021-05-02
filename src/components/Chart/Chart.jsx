@@ -1,59 +1,13 @@
 import React, { useEffect, memo } from "react";
 import { Line } from "react-chartjs-2";
-import numeral from "numeral";
-import { casesTypeColors } from "../../utils/utils";
+import { casesTypeColors, chartOptions } from "../../utils/utils";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 
 import * as actions from "../../redux/actions";
-
-import "./Chart.scss";
 import { useDispatch, useSelector } from "react-redux";
 
-const options = {
-  legend: {
-    display: false,
-  },
-  elements: {
-    point: {
-      radius: 0,
-    },
-  },
-  maintainAspectRatio: false,
-  tooltips: {
-    mode: "index",
-    intersect: false,
-    callbacks: {
-      label: function (tooltipItem) {
-        return numeral(tooltipItem.value).format("+0,0");
-      },
-    },
-  },
-  scales: {
-    xAxes: [
-      {
-        type: "time",
-        time: {
-          format: "MM/DD/YY",
-          tooltipFormat: "ll",
-        },
-      },
-    ],
-    yAxes: [
-      {
-        gridLines: {
-          display: false,
-        },
-        ticks: {
-          // Include a dollar sign in the ticks
-          callback: function (value) {
-            return numeral(value).format("0a");
-          },
-        },
-      },
-    ],
-  },
-};
+import "./Chart.scss";
 
 function Chart({ casesType, timeline, country }) {
   const dispatch = useDispatch();
@@ -93,7 +47,7 @@ function Chart({ casesType, timeline, country }) {
               },
             ],
           }}
-          options={options}
+          options={chartOptions}
         />
       )}
     </div>

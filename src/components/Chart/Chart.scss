@@ -4,12 +4,12 @@
   align-items: center;
   justify-content: space-between;
   height: calc(100% - 70px);
-}
 
-.chart__time-dropdown {
-  margin-bottom: 10px;
-}
+  &__time-dropdown {
+    margin-bottom: 10px;
+  }
 
-.chart__header {
-  margin-bottom: 10px;
+  &__header {
+    margin-bottom: 10px;
+  }
 }

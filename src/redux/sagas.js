@@ -1,9 +1,8 @@
 import * as actions from "./actions";
-import { normilizeChartData } from "../utils/utils";
+import { normalizeChartData } from "../utils/utils";
 import { put, takeEvery, all } from "redux-saga/effects";
 
 export function* onInitializeCountriesData() {
-  console.log("SAGA1");
   try {
     let response = yield fetch("https://disease.sh/v3/covid-19/all");
     const countryData = yield response.json();
@@ -15,9 +14,6 @@ export function* onInitializeCountriesData() {
       name: country.country,
       value: country.countryInfo.iso3,
     }));
-
-    //const casesType = yield select((state) => state.appState.casesType);
-    //const sortedData = sortData(countriesData, casesType);
 
     return yield put(
       actions.initializeCountiesDataSuccess(
@@ -33,7 +29,6 @@ export function* onInitializeCountriesData() {
 }
 
 export function* onChangeCountry(action) {
-  console.log("SAGA2");
   try {
     const { countryKey } = action.payload;
     const url =
@@ -56,7 +51,6 @@ export function* onChangeCountry(action) {
 }
 
 export function* onLoadChartData(action) {
-  console.log("SAGA3");
   try {
     const { casesType, timeline, country } = action.payload;
     const url =
@@ -66,7 +60,7 @@ export function* onLoadChartData(action) {
     const response = yield fetch(url);
     const data = yield response.json();
 
-    const chartData = normilizeChartData(data, casesType, country);
+    const chartData = normalizeChartData(data, casesType, country);
 
     return yield put(actions.loadChartDataSuccess(chartData));
   } catch (e) {
@@ -75,7 +69,6 @@ export function* onLoadChartData(action) {
 }
 
 export function* watchSagas() {
-  //console.log("SAGARUNN", actions.initializeCountiesData().type);
   yield takeEvery(
     actions.initializeCountiesData().type,
     onInitializeCountriesData
