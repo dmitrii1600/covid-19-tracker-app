@@ -1,0 +1,44 @@
+.info-card {
+  display: flex;
+  width: 100%;
+
+  .MuiCardContent-root {
+    color: grey;
+    width: 100%;
+    padding: 16px;
+  }
+
+  .MuiCardContent-root:last-child {
+    padding-bottom: 16px;
+  }
+
+  .MuiTypography-root {
+    text-align: center;
+  }
+
+  &__cases {
+    text-align: center;
+  }
+}
+
+.info-card--active {
+  border: 2px solid #CC1034;
+  border-top: 10px solid #CC1034;
+  .MuiCardContent-root {
+    color: #CC1034;
+  }
+}
+
+.info-card--green.info-card--active {
+  border-color: #7dd71d;
+  .MuiCardContent-root {
+    color: #7dd71d;
+  }
+}
+
+.info-card--black.info-card--active {
+  border-color: #000000;
+  .MuiCardContent-root {
+    color: #000000;
+  }
+}

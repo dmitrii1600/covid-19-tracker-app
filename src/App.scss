@@ -1,0 +1,212 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  background-color: aliceblue;
+}
+
+.app {
+  display: flex;
+  padding: 20px;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.app__left-block {
+  flex: 0.6;
+  margin-right: 20px;
+  max-width: 60%;
+}
+.app__right-block {
+  flex: 0.4 1;
+  max-width: 40%;
+  max-height: calc(100vh - 40px);
+
+  .MuiCard-root {
+    height: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+    .MuiCardContent-root {
+      height: 100%;
+    }
+  }
+
+
+}
+
+.app__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+
+  h1 {
+    margin-right: 20px;
+  }
+}
+
+.app__header-buttons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 46px;
+
+  .MuiButtonGroup-root {
+    height: 100%;
+  }
+
+  .MuiButton-root {
+    height: 100%;
+  }
+}
+
+.app__dropdown {
+  width: 150px;
+  height: 100%;
+  margin-left: 20px;
+
+  .MuiOutlinedInput-root {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.app__statistics {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  margin-bottom: 20px;
+
+  .MuiCard-root:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.app__chart {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1rem;
+  margin-top: 16px;
+  box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
+  height: calc(100vh - 420px);
+  max-width: 100%;
+}
+
+.app__diagrams {
+  margin: 16px 0;
+  display: flex;
+  justify-content: space-evenly;
+  height: 300px;
+  max-width: 100%;
+}
+
+.diagrams {
+  &__container {
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__title {
+    width: 100%;
+    height: 10%;
+    text-align: center;
+    margin-bottom: 5px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 1200px) {
+  .app {
+    flex-direction: column;
+  }
+
+  .app__right-block {
+    flex: 1;
+    max-width: 100%;
+    margin-top: 20px;
+    height: 500px;
+    max-height: 500px;
+  }
+
+  .app__left-block {
+    max-width: 100%;
+    margin-right: 0;
+    flex: 1;
+  }
+
+  .app__statistics {
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    .MuiCard-root {
+      max-width: 600px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .MuiCard-root:not(:last-child) {
+      margin-right: 0;
+      margin-bottom: 10px;
+    }
+  }
+
+  .info-card {
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .app__chart {
+    height: 400px;
+  }
+
+  .app__header {
+    margin-bottom: 8px;
+  }
+
+  .app__diagrams {
+    flex-direction: column;
+    height: 650px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .diagrams__container {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .diagrams__content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .app__header {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h1 {
+      font-size: 25px;
+      margin-right: 0;
+      margin-bottom: 8px;
+    }
+  }
+}
