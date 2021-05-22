@@ -7,6 +7,9 @@
 
   &__time-dropdown {
     margin-bottom: 10px;
+    .MuiInputBase-root {
+      height: 40px;
+    }
   }
 
   &__header {

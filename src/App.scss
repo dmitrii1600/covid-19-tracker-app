@@ -8,7 +8,7 @@ a {
 }
 
 body {
-  background-color: aliceblue;
+  background-color: #edf8fc;
 }
 
 .app {
@@ -38,6 +38,10 @@ body {
         height: 100%;
       }
     }
+
+    h2 {
+      margin-bottom: 8px;
+    }
   }
 
   &__header {
@@ -48,6 +52,7 @@ body {
 
     h1 {
       margin-right: 20px;
+      width: 40%;
     }
   }
 
@@ -200,6 +205,8 @@ body {
         font-size: 25px;
         margin-right: 0;
         margin-bottom: 8px;
+        width: 100%;
+        text-align: center;
       }
     }
 
