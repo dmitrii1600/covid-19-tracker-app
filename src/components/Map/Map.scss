@@ -37,6 +37,22 @@
     color: #555;
 }
 
+.info-status {
+    font-size: 13px;
+    font-weight: bold;
+    color: grey;
+
+    &--safe {
+        color: green;
+    }
+    &--pre-critical {
+        color: orange;
+    }
+    &--critical {
+        color: red;
+    }
+}
+
 .info-container {
     width: 200px;
 }

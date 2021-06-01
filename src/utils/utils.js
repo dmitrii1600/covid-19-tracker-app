@@ -116,3 +116,21 @@ export const normalizeChartData = (data, casesType, dataType) => {
 
 export const capitalizeFirstLetter = (string) =>
   string[0].toUpperCase() + string.slice(1);
+
+export const calculateTravelStatus = (activeCases, population) => {
+  const indicator = activeCases / population;
+
+  if (indicator >= 0.001) {
+    return "CRITICAL";
+  }
+
+  if (indicator >= 0.0007) {
+    return "PRE-CRITICAL";
+  }
+
+  if (indicator > 0) {
+    return "SAFE";
+  }
+
+  return "UNKNOWN";
+};

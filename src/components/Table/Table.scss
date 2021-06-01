@@ -3,17 +3,18 @@
     overflow: auto;
     height: calc(100% - 100px);
     color: grey;
+
+    tr:nth-of-type(odd) {
+        background-color: whitesmoke;
+    }
+
+    tr {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.5rem;
+    }
 }
 
-.table tr:nth-of-type(odd) {
-    background-color: whitesmoke;
-}
-
-.table tr {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.5rem;
-}
 
 @media (max-width: 600px) {
     .table {
